@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+
+.rst-content .toctree-wrapper > p.caption, h1, h2, h3, h4, h5, h6, legend {
+  font-weight: 700;
+  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Mobile top bar */
+.wy-nav-top {
+  background-color: #19486A !important;
+}
+
+/* Hamburger icon and title link */
+.wy-nav-top i,
+.wy-nav-top a {
+  color: #FBFBFB !important;
+}
+
+/* Optional: hover effect on hamburger */
+.wy-nav-top a:hover {
+  color: #B2C2CE !important;
+}
+
+/* Menu-band links */
+.wy-menu-vertical a {
+  line-height: 25px;
+  padding: .4045em 1.618em;
+  display: block;
+  position: relative;
+  font-size: 100%;
+  color: #FBFBFB;
+}
+
+/* Change hover background color for menu links */
+.wy-menu-vertical a:hover {
+  background-color: #B2C2CE;
+  /*color: #ffffff; optional: ensure text stays visible */
+}
+
+
+/* CONTENTS Feld */
+.wy-menu-vertical p.caption {
+  color: #19486A;
+  line-height: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 80%;
+  white-space: nowrap;
+}
+/*  Logo */
+.wy-side-nav-search > a img.logo {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: auto;
+  border-radius: 0;
+  max-width: 60%;
+  background: transparent;
+}
+
+/* Feld hinter Logo */
+.wy-side-nav-search {
+  display: block;
+  width: 300px;
+  padding: .809em;
+  margin-bottom: .809em;
+  z-index: 200;
+  background-color: #06131c;
+  text-align: center;
+  color: #fcfcfc00;
+}
+/* TOC Farbe SDG 17/ 50% */
+.wy-nav-side {
+   background-color: #7591A6;
+}
+
+/* active sidebar items */
+.wy-menu-vertical li.current a, .wy-menu-vertical li.toctree-l2.current > a
+{
+  background-color: #19486A;
+  border: none !important; 
+  color: #FBFBFB !important;
+  ;
+}
+
+/* Prevent white-on-white when hovering over active sidebar items */
+.wy-menu-vertical li.current a:hover,
+.wy-menu-vertical li.toctree-l2.current > a:hover {
+  background-color: #19486A;  /* Keep the same background */
+  color: #FBFBFB !important;  /* Keep the text white */
+}
+
+.wy_breadcrumbs a {
+    color: #79BCFF;
+    text-decoration: none; /* Optional */
+}
+
+.wy_breadcrumbs a:hover {
+    color: #1e90ff; /* Slightly darker blue for hover */
+    text-decoration: underline; /* Optional */
+}
+
+/* Customize background color of content and blank space behind. white*/ 
+.wy-nav-content {
+    max-width: 1200px !important;
+	background-color: #FBFBFB;
+}
+
+/* Unvisited links in main content */
+.wy-nav-content a {
+  color: #19486A;  
+  text-decoration: none;  /* Optional: remove underline */
+}
+
+/* Visited links */
+.wy-nav-content a:visited {
+  color: #B7A392;  
+}
+
+/* Farbe Mudflat*/
+.wy-nav-content-wrap {
+    background-color: #B7A392;
+}
+
+
+.wy-body-for-nav {
+  background: left repeat-y #fcfcfc;
+  background-color: #19486A;
+}
+
+/* Background for code blocks */
+.highlight, .highlight pre, .rst-content .highlight {
+  background: #f8f8f8 !important;
+  color: #333 !important;
+  border: none !important;
+}
+
+/* Inline code */
+code {
+  background-color: #f0f0f0 !important;
+  color: #19486A !important;
+}
+
+/* Keywords: import, from */
+.highlight-ipython3 .k,
+.highlight .k {
+  color: #06131C !important;
+  font-weight: bold !important;
+}
+/* Keywords: import, from */
+.highlight-ipython3 .kn,
+.highlight .kn {
+  color: #06131C;
+  font-weight: bold;
+}
+
+/* Keywords: True/ False */
+.highlight-ipython3 .kc,
+.highlight .kc {
+  color: #06131C;
+  font-weight: bold;
+}
+/* metaformat, numbers  */
+.highlight-ipython3 .mf,
+.highlight .mf {
+  color: #19486A !important;
+  font-weight: bold;
+}
+/* self */
+.highlight-ipython3 .bp,
+.highlight .bp {
+  color: #06131C;
+  font-weight: bold;
+}
+
+/* _init */
+
+.highlight .fm {
+  color: #0000FF;
+}
+
+/* built-in typex and constructor functions  */
+.highlight-ipython3 .nb,
+.highlight .nb {
+  color: #06131C;
+  font-weight: bold;
+}
+/* built-in classes  */
+.highlight-ipython3 .nc,
+.highlight .nc {
+  color: #19486A !important;
+  font-weight: bold;
+}
+.highlight-ipython3 .ow,
+.highlight .ow {
+  color: #06131C;
+  font-weight: bold;
+}
+
+
+/* Module/package names */
+.highlight-ipython3 .nn,
+.highlight .nn {
+  color: #19486A !important;
+  font-weight: normal;
+}
+
+/* General names */
+.highlight-ipython3 .n,
+.highlight .n {
+  color: #19486A !important;
+}
+
+/* Strings */
+.highlight-ipython3 .s,
+.highlight .s {
+  color: #006400 !important;
+}
+
+/* Comments */
+.highlight-ipython3 .c,
+.highlight .c {
+  color: #777777 !important;
+  font-style: italic !important;
+}
