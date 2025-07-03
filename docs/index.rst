@@ -19,7 +19,7 @@ Welcome to x-marsh's documentation!
    :caption: Model Relations R
    
    chapter_02/02_marsh_elevation_model
-   chapter_05/05_accretion_vs_slr_ts
+   chapter_05/02_accretion_vs_slr_ts
    
 .. toctree::
    :maxdepth: 2
