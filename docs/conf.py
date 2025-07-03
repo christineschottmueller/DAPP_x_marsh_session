@@ -60,6 +60,6 @@ html_context = {
   'display_github': True,
   # Set the following variables to generate the resulting github URL for each page.
   'github_user': 'christineschottmueller',
-  'github_repo': 'x-marsh',
+  'github_repo': 'DAPP_x-marsh_session',
   'github_version': 'master/docs/'
 }
