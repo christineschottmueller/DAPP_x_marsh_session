@@ -22,9 +22,9 @@ Load plotting data
 ~~~~~~~~~~~~~~~~~~
 
 To simulate the marsh accretion time series, inputs from the high and low emissions sea level rise scenarios RCP2.6 and
-RCP8.5 were used. Following AR5 projections (`Church et al., 2013 <
-https://www.cambridge.org/core/books/abs/climate-change-2013-the-physical-science-basis/sea-level-change/8B46425943EA6EEB0DE30A7B2C8226FE>`_), the regional sea level rise data anchored to the 1986–2005 baseline period, were provided by the Integrated Climate Data Center (ICDC) at the University of Hamburg’s Center for Earth System Research and Sustainability (CEN). For each concentration pathway RCP2.6 or RCP8.5, the projected sea level rise rates as well as absolute levels are stored for the upper, lower and central estimate in the 5–95 \% confidence interval of CMIP5 projections. Tidal elevations data was sourced from the Climate Data Store. The simulations provided used the Global Tide Surge Model (GTSMv3.0) 
-(´Muis et al., 2020 <https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2020.00263/full>`_) and incorporate the IPCC scenarios.
+RCP8.5 were used. Following AR5 projections (`Church et al., 2013 
+<https://www.cambridge.org/core/books/abs/climate-change-2013-the-physical-science-basis/sea-level-change/8B46425943EA6EEB0DE30A7B2C8226FE>`_), the regional sea level rise data anchored to the 1986–2005 baseline period, were provided by the Integrated Climate Data Center (ICDC) at the University of Hamburg’s Center for Earth System Research and Sustainability (CEN). For each concentration pathway RCP2.6 or RCP8.5, the projected sea level rise rates as well as absolute levels are stored for the upper, lower and central estimate in the 5–95 \% confidence interval of CMIP5 projections. Tidal elevations data was sourced from the Climate Data Store. The simulations provided used the Global Tide Surge Model (GTSMv3.0) 
+(`Muis et al., 2020 <https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2020.00263/full>`_) and incorporate the IPCC scenarios.
 
 .. code:: ipython3
 
