@@ -19,6 +19,7 @@ Welcome to x-marsh's documentation!
    :caption: Model Relations R
    
    chapter_02/02_marsh_elevation_model
+   chapter_05/05_accretion_vs_slr_ts
    
 .. toctree::
    :maxdepth: 2
@@ -35,13 +36,6 @@ Welcome to x-marsh's documentation!
    chapter_04/04_clean_output_m_raw
  
  
-.. toctree::
-   :maxdepth: 2
-   :caption: Visualizing Critical States
-
-   chapter_05/05_accretion_vs_slr_ts
-
-
 .. toctree::
    :maxdepth: 2
    :caption: Deriving Policy Lifespans
