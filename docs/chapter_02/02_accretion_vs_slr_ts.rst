@@ -35,7 +35,7 @@ RCP8.5 were used. Following AR5 projections (`Church et al., 2013
 
 Te applied policy is conservation.
 
-Categorical Parameter Set Used
+Data loading and preparation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In this example, all categorical input parameters of the ``marsh_elevation_model`` remain constant, while the sea-level rise and tidal elevation time series vary depending on the selected RCP scenario and associated uncertainty level (low, mean, or high).
 
@@ -116,11 +116,9 @@ The time series output from each scenario is now stored in the ``results`` dicti
 		   globals()[name] = df		
 		   
 		   
-Smoothen time-series for plotting
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The final step in data pre-processing before plotting involves smoothing the accretion time series. This step serves purely aesthetic purposes, helping to create cleaner and more visually appealing plots without altering the underlying trends.
 
-Apply Savitzky-Golay filter
+The final step in data pre-processing before plotting involves smoothing the accretion time series with the Savitzky-Golay filter. This step serves purely aesthetic purposes, helping to create cleaner and more visually appealing plots without altering the underlying trends.
+
 
 .. code:: ipython3
 
@@ -138,6 +136,8 @@ Apply Savitzky-Golay filter
 
 Plot command
 ~~~~~~~~~~~~
+
+
 
 .. code:: ipython3
 
@@ -186,11 +186,19 @@ Plot command
 	plt.savefig('accretion_rate_pio_S15_conservation.png')
 	plt.show()
 
-.. image:: img/02_accretion_rate_time_series_conservation.png
-   :alt: a) Simulated time-series ($n=6$) of annual growth rate in the pioneer zone in focus area 15 with fixed categorical, uncertain parameters. The simulations were performed using inputs from the high and low emissions sea level rise scenarios \gls{RCP}2.6 and \gls{RCP}8.5 (X). 
+
+.. figure:: img/02_accretion_rate_time_series_conservation.png
+   :alt: Simulated accretion rate time-series ``(n=6)`` in the pioneer zone in focus area 15 with fixed categorical, uncertain parameters.
    :width: 500px
    :align: center
-   
+
+   Simulated marsh growth rate time-series ``(n=6)`` in the pioneer zone in focus area 15 with fixed categorical, uncertain parameters.  
+   The simulations were performed using water level inputs from the high and low emissions scenarios RCP 2.6 and RCP8.5 (X).
+
+  
+
+
+
 
 .. code:: ipython3
 
@@ -247,15 +255,11 @@ Plot command
    
    
 .. figure:: img/02_elevation_time_series_conservation.png
-   :alt: Simulated elevation time-series ($n=6$) in the pioneer zone in focus area 15 with fixed categorical, uncertain parameters.
+   :alt: Simulated elevation time-series ``(n=6)`` in the pioneer zone in focus area 15 with fixed categorical, uncertain parameters.
    :width: 500px
    :align: center
 
-   Simulated elevation time-series ($n=6$) in the pioneer zone in focus area 15 with fixed categorical, uncertain parameters.  
-   The simulations were performed using inputs from the high and low emissions sea level rise scenarios \gls{RCP}2.6 and \gls{RCP}8.5 (X).
+   Simulated elevation time-series ``(n=6)`` in the pioneer zone in focus area 15 with fixed categorical, uncertain parameters.  
+   The simulations were performed using water level inputs from the high and low emissions scenarios RCP 2.6 and RCP8.5 (X).
 
-   
-.. image:: img/02_elevation_time_series_conservation.png
-   :alt: Simulated elevation time-series ($n=6$) in the pioneer zone in focus area 15 with fixed categorical, uncertain parameters. The simulations were performed using inputs from the high and low emissions sea level rise scenarios \gls{RCP}2.6 and \gls{RCP}8.5 (X). 
-   :width: 500px
-   :align: center
+  
