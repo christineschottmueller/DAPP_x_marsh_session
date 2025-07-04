@@ -188,7 +188,7 @@ Plot command
 
 .. image:: img/02_accretion_rate_time_series_conservation.png
    :alt: a) Simulated time-series ($n=6$) of annual growth rate in the pioneer zone in focus area 15 with fixed categorical, uncertain parameters. The simulations were performed using inputs from the high and low emissions sea level rise scenarios \gls{RCP}2.6 and \gls{RCP}8.5 (X). 
-   :width: 1100px
+   :width: 700px
    :align: center
    
 
@@ -249,5 +249,5 @@ Plot command
    
 .. image:: img/02_elevation_time_series_conservation.png
    :alt: Simulated elevation time-series ($n=6$) in the pioneer zone in focus area 15 with fixed categorical, uncertain parameters. The simulations were performed using inputs from the high and low emissions sea level rise scenarios \gls{RCP}2.6 and \gls{RCP}8.5 (X). 
-   :width: 1100px
+   :width: 700px
    :align: center
