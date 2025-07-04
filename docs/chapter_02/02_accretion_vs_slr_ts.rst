@@ -71,6 +71,7 @@ This code organizes the sea-level rise and mean sea-level time series into a dic
 	}
     
 This loop runs the marsh_elevation_model for each sea-level rise scenario by merging the corresponding time series with tidal data. The results—marsh elevation, elevation change rate, and mean sea level—are stored in a dictionary (``results``) for plotting.
+
 .. code:: ipython3
 
     results = {}
@@ -140,7 +141,7 @@ Plot command
 
 .. code:: ipython3
 
-		fig, ax1 = plt.subplots(figsize=(9,6))  # adjust size as needed
+	fig, ax1 = plt.subplots(figsize=(9,6))  # adjust size as needed
 
 	### RCP 2.6
 	### marsh-growth
@@ -192,6 +193,7 @@ Plot command
    
 
 .. code:: ipython3
+
 	fig, ax2 = plt.subplots(figsize=(9,6)) 
 
 	### RCP 2.6
@@ -203,8 +205,6 @@ Plot command
 	p1_26_slr = ax2.plot(result_mean_26['year'], result_mean_26['msl'], linestyle='-', color='#79BCFF',linewidth=2)
 	ax2.fill_between(result_low_26['year'], result_low_26['msl'], result_high_26['msl'], color='#79BCFF', alpha=0.2)
 
-
-
 	#### RCP 8.5
 	### marsh-growth
 	p1_85_E = ax2.plot(result_mean_85['year'], result_mean_85['elevation'], label=r'$z_{marsh}$',linestyle='--', color='#FF0000')
@@ -213,7 +213,6 @@ Plot command
 	### sea-level-rise
 	p1_85_slr = ax2.plot(result_mean_85['year'], result_mean_85['msl'],  linestyle='-', color='#FF0000',linewidth=2)
 	ax2.fill_between(result_low_85['year'], result_low_85['msl'], result_high_85['msl'], color='#FF0000', alpha=0.2)
-
 
 	ax2.set_xlim(2044, 2100)
 	ax2.set_ylim(0.17, 1.2)
@@ -227,8 +226,6 @@ Plot command
 	### SLR
 	p2_26_slr = ax2.fill(np.NaN, np.NaN,  color='#79BCFF', alpha=0.2)
 	p2_85_slr = ax2.fill(np.NaN, np.NaN,  color='#FF0000', alpha=0.4)
-
-
 
 	handles = [(p1_26_slr[0], p2_26_slr[0]), (p1_85_slr[0], p2_85_slr[0]),  (p1_26_E[0], p2_26_E[0]), (p1_85_E[0], p2_85_E[0])]
 	labels = [r'Sea level $_{RCP 2.6}$', r'Sea level $_{RCP 8.5}$',  r'Elevation $_{RCP 2.6}, conservation$',
