@@ -1,22 +1,14 @@
 Simulating marsh-accretion trajectories 
 -----------------------------------------
 
-Illustration of the effects of two management strategies (L) — marsh
-conservation (top) and marsh restoration (bottom) for a fixed set of
-categorical input parameters and the high and low emissions sea level
-rise scenarion RCP8.5 and RCP2.6 (X) on marsh accretion rates.
-
-Load plotting data
-~~~~~~~~~~~~~~~~~~
-
-To simulate the marsh accretion time series, inputs from the high and low emissions sea level rise scenarios RCP2.6 and
-RCP8.5 were used. Following AR5 projections (`Church et al., 2013 
+Here we will visualize growth rate and elevation change time series simulated with the ``marsh_elevation_model``. In this example, all categorical input parameters of the ``marsh_elevation_model`` remain constant, while the sea-level rise and tidal elevation time series vary depending on the selected RCP scenario and associated uncertainty level (low, mean, or high).  Here the high and low emissions sea level rise scenarios RCP2.6 and
+RCP 8.5 were used. Following AR5 projections (`Church et al., 2013 
 <https://www.cambridge.org/core/books/abs/climate-change-2013-the-physical-science-basis/sea-level-change/8B46425943EA6EEB0DE30A7B2C8226FE>`_), the regional sea level rise data anchored to the 1986–2005 baseline period, were provided by the Integrated Climate Data Center (ICDC) at the University of Hamburg’s Center for Earth System Research and Sustainability (CEN). For each concentration pathway RCP2.6 or RCP8.5, the projected sea level rise rates as well as absolute levels are stored for the upper, lower and central estimate in the 5–95 \% confidence interval of CMIP5 projections. Tidal elevations data was sourced from the Climate Data Store. The simulations provided used the Global Tide Surge Model (GTSMv3.0) 
 (`Muis et al., 2020 <https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2020.00263/full>`_) and incorporate the IPCC scenarios.
 
 Data loading and preparation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In this example, all categorical input parameters of the ``marsh_elevation_model`` remain constant, while the sea-level rise and tidal elevation time series vary depending on the selected RCP scenario and associated uncertainty level (low, mean, or high). For loading and preparing the data, we utilize the following python libraris first.
+For loading and preparing the data, we utilize the following python libraries first.
 
 
     import pandas as pd
@@ -78,7 +70,7 @@ This loop runs the marsh_elevation_model for each sea-level rise scenario by mer
 		)
 		 
 
-		results[result_name] = pd.DataFrame({
+		results[result_name +'_conservation'] = pd.DataFrame({
 			'year': years,
 			'elevation': z_vals,
 			'dz_dt': dz_vals,
@@ -107,15 +99,15 @@ The final step in data pre-processing before plotting involves smoothing the acc
 .. code:: ipython3
 
     window_size = 10  # Window size must be odd
-    poly_order = 1
-    smoothed_mean_26 = savgol_filter(result_mean_26['dz_dt'], window_size, poly_order)
-    smoothed_high_26 = savgol_filter(result_high_26['dz_dt'], window_size, poly_order)
-    smoothed_low_26 = savgol_filter(result_low_26['dz_dt'], window_size, poly_order)
-    
-    smoothed_mean_85 = savgol_filter(result_mean_85['dz_dt'], window_size, poly_order)
-    smoothed_high_85 = savgol_filter(result_high_85['dz_dt'], window_size, poly_order)
-    smoothed_low_85 = savgol_filter(result_low_85['dz_dt'], window_size, poly_order)
-    
+	poly_order = 1
+	smoothed_low_26_conservation = savgol_filter(result_low_26_conservation['dz_dt'], window_size, poly_order)
+	smoothed_mean_26_conservation = savgol_filter(result_mean_26_conservation['dz_dt'], window_size, poly_order)
+	smoothed_high_26_conservation = savgol_filter(result_high_26_conservation['dz_dt'], window_size, poly_order)
+
+	smoothed_low_85_conservation = savgol_filter(result_low_85_conservation['dz_dt'], window_size, poly_order)
+	smoothed_mean_85_conservation = savgol_filter(result_mean_85_conservation['dz_dt'], window_size, poly_order)
+	smoothed_high_85_conservation = savgol_filter(result_high_85_conservation['dz_dt'], window_size, poly_order)
+		
     
 
 Plot commands
@@ -136,27 +128,26 @@ With the following code we will create the plot, which shows the simulated annua
 
 	### RCP 2.6
 	### marsh-growth
-	p1_26 = ax1.plot(result_low_26['year'], smoothed_mean_26, linestyle='--', color='#79BCFF')
-	ax1.fill_between(result_low_26['year'], smoothed_low_26, smoothed_high_26, color='#DDA63A', alpha=0.4)
+	p1_26 = ax1.plot(result_low_26_conservation['year'], smoothed_mean_26_conservation, linestyle='--', color='#79BCFF')
+	ax1.fill_between(result_low_26_conservation['year'], smoothed_low_26_conservation, smoothed_high_26_conservation, color='#DDA63A', alpha=0.4)
 
 	### RCP 8.5
 	### marsh-growth
-	p1_85 = ax1.plot(result_mean_85['year'], smoothed_mean_85, linestyle='--', color='#FF0000')
-	ax1.fill_between(result_mean_85['year'], smoothed_low_85, smoothed_high_85, color='#8C6518', alpha=0.4)
+	p1_85 = ax1.plot(result_mean_85_conservation['year'], smoothed_mean_85_conservation, linestyle='--', color='#FF0000')
+	ax1.fill_between(result_mean_85_conservation['year'], smoothed_low_85_conservation, smoothed_high_85_conservation, color='#8C6518', alpha=0.4)
 
 	ax1.set_xlim(2044, 2100)
 	ax1.set_ylim(-0.006, 0.008)
-	###############    Customize legend    ####################
-	#Create an invisible fill to use in the legend.
-	p2_26 = ax1.fill(np.NaN, np.NaN,  color='#DDA63A', alpha=0.4)
-	p2_85= ax1.fill(np.NaN, np.NaN,  color='#8C6518', alpha=0.4)
 
+	###############    Customize legend    ####################
+	# Create an invisible fill to use in the legend.
+	p2_26 = ax1.fill(np.NaN, np.NaN, color='#DDA63A', alpha=0.4)
+	p2_85 = ax1.fill(np.NaN, np.NaN, color='#8C6518', alpha=0.4)
 
 	handles = [(p1_26[0], p2_26[0]), (p1_85[0], p2_85[0])]
-	labels = [r'Growth rate $_{RCP 2.6}$', r'Growth rate $_{RCP 8.5}$']
+	labels = [r'Growth rate $_{RCP 2.6}, conservation$', r'Growth rate $_{RCP 8.5}, conservation$']
 
-
-	ax1.legend(handles, labels, handleheight=1, loc='best',frameon=False, prop={'size': 14})
+	ax1.legend(handles, labels, handleheight=1, loc='best', frameon=False, prop={'size': 14})
 
 	ax1.set_ylabel('increment [meter]')
 	ax1.grid(True)
@@ -164,21 +155,22 @@ With the following code we will create the plot, which shows the simulated annua
 	ax1.annotate(
 		r'a)',
 		xy=(2047, -0.0050),
-		xytext=(2047, -0.0055),  # Position of text slightly above and to the right
-		ha='center',fontsize=22
+		xytext=(2047, -0.0055),
+		ha='center',
+		fontsize=22
 	)
-
 
 	# Set the context to increase overall font size
 	sns.set_context("talk", font_scale=0.7)
 
 	# Adjust layout to prevent overlapping
 	plt.tight_layout()
-	plt.savefig('accretion_rate_pio_S15_conservation.png')
+	plt.savefig('growth_rate_ts_S15_conservation.png')
 	plt.show()
 
 
-.. figure:: img/02_accretion_rate_time_series_conservation.png
+
+.. figure:: img/growth_rate_ts_S15_conservation.png
    :alt: Simulated accretion rate time-series ``(n=6)`` in the pioneer zone in focus area 15 with fixed categorical, uncertain parameters.
    :width: 500px
    :align: center
@@ -197,43 +189,42 @@ Next, we will plot the corresponding elevation time series together with the sea
 
 	### RCP 2.6
 	### marsh-growth
-	p1_26_E = ax2.plot(result_mean_26['year'], result_mean_26['elevation'], label=r'$z_{marsh}$',  linestyle='--', color='#79BCFF')
-	ax2.fill_between(result_mean_26['year'], result_low_26['elevation'], result_high_26['elevation'], color='#DDA63A', alpha=0.4)
+	p1_26_E = ax2.plot(result_mean_26_conservation['year'], result_mean_26_conservation['elevation'], label=r'$z_{marsh}$',  linestyle='--', color='#79BCFF')
+	ax2.fill_between(result_mean_26_conservation['year'], result_low_26_conservation['elevation'], result_high_26_conservation['elevation'], color='#DDA63A', alpha=0.4)
 
 	### sea-level-rise
-	p1_26_slr = ax2.plot(result_mean_26['year'], result_mean_26['msl'], linestyle='-', color='#79BCFF',linewidth=2)
-	ax2.fill_between(result_low_26['year'], result_low_26['msl'], result_high_26['msl'], color='#79BCFF', alpha=0.2)
+	p1_26_slr = ax2.plot(result_mean_26_conservation['year'], result_mean_26_conservation['msl'], linestyle='-', color='#79BCFF', linewidth=2)
+	ax2.fill_between(result_low_26_conservation['year'], result_low_26_conservation['msl'], result_high_26_conservation['msl'], color='#79BCFF', alpha=0.2)
 
 	#### RCP 8.5
 	### marsh-growth
-	p1_85_E = ax2.plot(result_mean_85['year'], result_mean_85['elevation'], label=r'$z_{marsh}$',linestyle='--', color='#FF0000')
-	ax2.fill_between(result_low_85['year'], result_low_85['elevation'], result_high_85['elevation'], color='#8C6518', alpha=0.4)
+	p1_85_E = ax2.plot(result_mean_85_conservation['year'], result_mean_85_conservation['elevation'], label=r'$z_{marsh}$', linestyle='--', color='#FF0000')
+	ax2.fill_between(result_low_85_conservation['year'], result_low_85_conservation['elevation'], result_high_85_conservation['elevation'], color='#8C6518', alpha=0.4)
 
 	### sea-level-rise
-	p1_85_slr = ax2.plot(result_mean_85['year'], result_mean_85['msl'],  linestyle='-', color='#FF0000',linewidth=2)
-	ax2.fill_between(result_low_85['year'], result_low_85['msl'], result_high_85['msl'], color='#FF0000', alpha=0.2)
+	p1_85_slr = ax2.plot(result_mean_85_conservation['year'], result_mean_85_conservation['msl'], linestyle='-', color='#FF0000', linewidth=2)
+	ax2.fill_between(result_low_85_conservation['year'], result_low_85_conservation['msl'], result_high_85_conservation['msl'], color='#FF0000', alpha=0.2)
 
 	ax2.set_xlim(2044, 2100)
 	ax2.set_ylim(0.17, 1.2)
 
 	###############    Customize legend    ####################
-	#Creates an invisible fill to use in the legend.
 	### Elevation
-	p2_26_E = ax1.fill(np.NaN, np.NaN,  color='#DDA63A', alpha=0.4)
-	p2_85_E= ax1.fill(np.NaN, np.NaN,  color='#8C6518', alpha=0.4)
+	p2_26_E = ax2.fill(np.NaN, np.NaN,  color='#DDA63A', alpha=0.4)
+	p2_85_E = ax2.fill(np.NaN, np.NaN,  color='#8C6518', alpha=0.4)
 
 	### SLR
 	p2_26_slr = ax2.fill(np.NaN, np.NaN,  color='#79BCFF', alpha=0.2)
 	p2_85_slr = ax2.fill(np.NaN, np.NaN,  color='#FF0000', alpha=0.4)
 
-	handles = [(p1_26_slr[0], p2_26_slr[0]), (p1_85_slr[0], p2_85_slr[0]),  (p1_26_E[0], p2_26_E[0]), (p1_85_E[0], p2_85_E[0])]
-	labels = [r'Sea level $_{RCP 2.6}$', r'Sea level $_{RCP 8.5}$',  r'Elevation $_{RCP 2.6}, conservation$',
-			  r'Elevation $_{RCP 8.5}, conservation$' ]
-	ax2.legend(handles, labels, ncol=2, handleheight=1, prop={'size': 14},loc='upper left',frameon=False )
+	handles = [(p1_26_slr[0], p2_26_slr[0]), (p1_85_slr[0], p2_85_slr[0]), (p1_26_E[0], p2_26_E[0]), (p1_85_E[0], p2_85_E[0])]
+	labels = [r'Sea level $_{RCP 2.6}$', r'Sea level $_{RCP 8.5}$', 
+			  r'Elevation $_{RCP 2.6}, conservation$', 
+			  r'Elevation $_{RCP 8.5}, conservation$']
+	ax2.legend(handles, labels, ncol=2, handleheight=1, prop={'size': 14}, loc='upper left', frameon=False)
 
 	ax2.set_ylabel('[meter]')
 	ax2.grid(True)
-
 	ax2.grid(axis='x', visible=False)
 
 	# Set the context to increase overall font size
@@ -241,11 +232,11 @@ Next, we will plot the corresponding elevation time series together with the sea
 
 	# Adjust layout to prevent overlapping
 	plt.tight_layout()
-	plt.savefig('TS_Elevation_Pio_S15_conservation.png')
-	plt.show() 
+	plt.savefig('elevation_ts_S15_conservation.png')
+	plt.show()
    
    
-.. figure:: img/02_elevation_time_series_conservation.png
+.. figure:: img/elevation_ts_S15_conservation.png
    :alt: Simulated elevation time-series ``(n=6)`` in the pioneer zone in focus area 15 with fixed categorical, uncertain parameters.
    :width: 500px
    :align: center

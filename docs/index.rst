@@ -20,6 +20,7 @@ Welcome to x-marsh's documentation!
    
    chapter_02/02_marsh_elevation_model
    chapter_02/02_accretion_vs_slr_ts
+   chapter_02/02_effects_and_thresholds
    
 .. toctree::
    :maxdepth: 2
