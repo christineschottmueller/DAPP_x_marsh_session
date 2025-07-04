@@ -1,15 +1,3 @@
-.. code:: ipython3
-
-    import pandas as pd
-    import numpy as np
-    import matplotlib.pyplot as plt
-    from scipy.signal import savgol_filter
-    from matplotlib.lines import Line2D
-    from matplotlib.patches import Patch, FancyArrowPatch, Rectangle, Ellipse
-    from matplotlib.gridspec import GridSpec
-    import seaborn as sns
-
-
 Simulating marsh-accretion trajectories 
 -----------------------------------------
 
@@ -26,31 +14,29 @@ RCP8.5 were used. Following AR5 projections (`Church et al., 2013
 <https://www.cambridge.org/core/books/abs/climate-change-2013-the-physical-science-basis/sea-level-change/8B46425943EA6EEB0DE30A7B2C8226FE>`_), the regional sea level rise data anchored to the 1986–2005 baseline period, were provided by the Integrated Climate Data Center (ICDC) at the University of Hamburg’s Center for Earth System Research and Sustainability (CEN). For each concentration pathway RCP2.6 or RCP8.5, the projected sea level rise rates as well as absolute levels are stored for the upper, lower and central estimate in the 5–95 \% confidence interval of CMIP5 projections. Tidal elevations data was sourced from the Climate Data Store. The simulations provided used the Global Tide Surge Model (GTSMv3.0) 
 (`Muis et al., 2020 <https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2020.00263/full>`_) and incorporate the IPCC scenarios.
 
-.. code:: ipython3
-
-	slr_rcp_85 = pd.read_csv('model_input_X_L/slr85.csv', sep=',')
-	slr_rcp_26 = pd.read_csv('model_input_X_L/slr26.csv', sep=',')
-	tides_per_year = pd.read_csv('model_input_X_L/tides_rcp85_S15.tsv', sep='\t')
-
-
-Te applied policy is conservation.
-
 Data loading and preparation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In this example, all categorical input parameters of the ``marsh_elevation_model`` remain constant, while the sea-level rise and tidal elevation time series vary depending on the selected RCP scenario and associated uncertainty level (low, mean, or high).
+In this example, all categorical input parameters of the ``marsh_elevation_model`` remain constant, while the sea-level rise and tidal elevation time series vary depending on the selected RCP scenario and associated uncertainty level (low, mean, or high). For loading and preparing the data, we utilize the following python libraris first.
+
+
+    import pandas as pd
+	import numpy as np
+
 
 .. code:: ipython3
 
-    z_init = 0.7               # Initial elevation in pioneer zone
+	z_init = 0.7               # Initial elevation in pioneer zone
 	c_flood = 0.05             # Low background sediment concentration
 	rho_deposit = 400          # Low dry buld density due to low mineral content of suspended sediments 
 	s_subsidence = 0.003       # Autocompaction rate
 	c_flood_nourishment = 0.0  # Policy: No nourishment strategy
 	nourishment_frequency = 1  # No nourishment every year
 	fd = 0.4                   # Policy: Conservation, basically means do nothing
+	slr_rcp_85 = pd.read_csv('model_input_X_L/slr85.csv', sep=',')
+	slr_rcp_26 = pd.read_csv('model_input_X_L/slr26.csv', sep=',')
+	tides_per_year = pd.read_csv('model_input_X_L/tides_rcp85_S15.tsv', sep='\t')
 
-
-This code organizes the sea-level rise and mean sea-level time series into a dictionary (``slr_series_dict``) to facilitate iteration through different scenarios in the ``marsh_elevation_model``. Each entry corresponds to a specific RCP (2.6 or 8.5) and uncertainty level (low, mean, high), allowing efficient processing of multiple future sea-level trajectories.
+Next, we organize the sea-level rise and mean sea-level time series into a dictionary (``slr_series_dict``) to facilitate iteration through different scenarios in the ``marsh_elevation_model``. Each entry corresponds to a specific RCP (2.6 or 8.5) and uncertainty level (low, mean, high), allowing efficient processing of multiple future sea-level trajectories.
  
 .. code:: ipython3
 
@@ -99,7 +85,7 @@ This loop runs the marsh_elevation_model for each sea-level rise scenario by mer
 			'msl': msl,
 		})
 
-Store resulting time series as separate .txt files in the ``model_output_M folder``
+The resulting time series are stored as separate .txt files in the ``model_output_M folder``.
 
 .. code:: ipython3
 
@@ -107,14 +93,12 @@ Store resulting time series as separate .txt files in the ``model_output_M folde
 		df.to_csv(f'model_output_M/Accretion_time_series/{result_name}.txt', sep='\t', index=False)
 		
 		
-
 The time series output from each scenario is now stored in the ``results`` dictionary, where the keys (``result_name``) identify the scenario and the values contain the corresponding time series as DataFrames. To avoid repeatedly accessing them with ``results[result_name``] in the plot command, we unpack the dictionary into individual variables in the global namespace. Each key becomes a standalone variable name, directly assigned to its associated DataFrame for more convenient access in later analysis or plotting.
 
 
 .. code:: ipython3
 	for name, df in results.items():
 		   globals()[name] = df		
-		   
 		   
 
 The final step in data pre-processing before plotting involves smoothing the accretion time series with the Savitzky-Golay filter. This step serves purely aesthetic purposes, helping to create cleaner and more visually appealing plots without altering the underlying trends.
@@ -134,11 +118,18 @@ The final step in data pre-processing before plotting involves smoothing the acc
     
     
 
-Plot command
-~~~~~~~~~~~~
+Plot commands
+^^^^^^^^^^^^^^^
+Now the time series created with the ``marsh_accretion_model`` code are ready to be visualized, using the following necessary packages and libraries for this task.
+ 
+.. code:: ipython3
 
-
-
+    
+	import matplotlib.pyplot as plt
+	from scipy.signal import savgol_filter 
+	import seaborn as sns
+	
+With the following code we will create the plot, which shows the simulated annual marsh elevation changes under two contrasting sea level rise scenarios:  
 .. code:: ipython3
 
 	fig, ax1 = plt.subplots(figsize=(9,6))  # adjust size as needed
@@ -198,7 +189,7 @@ Plot command
   
 
 
-
+Next, we will plot the corresponding elevation time series together with the sea level rise under low and high emissions scenario. The times where an elevation trajectory intersects with the corresponding sea level trajectory indicate an approaching system shift - the marsh drowning.
 
 .. code:: ipython3
 
