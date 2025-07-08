@@ -16,8 +16,7 @@ Instantiate a model object with the use of ``Model`` object.
 	from ema_workbench import (Model, CategoricalParameter, ScalarOutcome)
 	
     model = Model('marshaccretion', function=x_marsh_function)
-    model.uncertainties = uncertainties
-    model.outcomes = outcomes
+    
 
 The uncertainties and outcomes are attributes of the ``Model`` object. Here the sets of their possible values are specified.
 
@@ -33,6 +32,9 @@ The uncertainties and outcomes are attributes of the ``Model`` object. Here the 
         CategoricalParameter('nourishment_frequency', [1, 5, 10]),
         CategoricalParameter('c_flood_nourishment', [0, 0.3, 0.5]),
     ]
+	
+	model.uncertainties = uncertainties
+    model.outcomes = outcomes
     
 In the ``x_marsh_function`` we defined outcomes of interest for each function evaluation, each experiment. 
 
