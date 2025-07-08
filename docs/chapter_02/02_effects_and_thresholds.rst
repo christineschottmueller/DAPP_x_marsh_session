@@ -176,7 +176,7 @@ Finally, we create one elevation time series for each policy and plot them next 
    
 .. figure:: img/elevation_ts_S15_combined.png
    :alt: Comparison of the effects two management policies on marsh elevation change the pioneer zone in focus area 15.
-   :width: 500px
+   :width: 1000px
    :align: center
 
    Comparison of the effects of two management policies on marsh elevation change the pioneer zone in focus area 15. 
