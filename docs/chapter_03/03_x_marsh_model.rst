@@ -68,9 +68,6 @@ Those, for which the critical year ($c_y$) is greater than 2100, the **Estimated
 
 .. code:: ipython3
 
-	from marsh_accretion_model import marsh_elevation_model
-	from helper_function import lineregress  
-	from data_loader import DataLoader
 	import numpy as np
 	import pandas as pd
 
