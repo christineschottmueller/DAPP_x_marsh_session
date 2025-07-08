@@ -83,9 +83,7 @@ The resulting time series are stored as separate .txt files in the ``model_outpu
 		df.to_csv(f'model_output_M/{result_name}.txt', sep='\t', index=False)
 		
 
-	
-	
-The time series output from each scenario is now stored in the ``results`` dictionary, where the keys (``result_name``) identify the scenario and the values contain the corresponding time series as DataFrames. To avoid repeatedly accessing them with ``results[result_name``] in the plot command, we unpack the dictionary into individual variables in the global namespace. Each key becomes a standalone variable name, directly assigned to its associated DataFrame for more convenient access in later analysis or plotting.
+The time series output from each scenario is now stored in the ``results`` dictionary, where the keys (``result_name``) identify the scenario and the values contain the corresponding time series as DataFrames. To avoid repeatedly accessing them with ``results[result_name]`` in the plot command, we unpack the dictionary into individual variables in the global namespace. Each key becomes a standalone variable name, directly assigned to its associated DataFrame for more convenient access in later analysis or plotting.
 
 .. code:: ipython3
 	for name, df in results.items():
@@ -97,6 +95,7 @@ The final step in data pre-processing before plotting involves smoothing the acc
 .. code:: ipython3
 
 	from scipy.signal import savgol_filter 
+	
 	window_size = 11  # Window size must be odd
 	poly_order = 1
 	smoothed_low_26_conservation = savgol_filter(result_low_26_conservation['dz_dt'], window_size, poly_order)
