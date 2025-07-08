@@ -13,13 +13,11 @@ Our experiment setup includes 10 parameters in total. Of these, 7 define uncerta
 
 
 .. code:: ipython3
-    from ema_workbench import (Model, CategoricalParameter, ScalarOutcome)
+
+	from ema_workbench import (Model, CategoricalParameter, ScalarOutcome)
     
 Import wrapper function from x_marsh.py
 
-.. code:: ipython3
-
-   from x_marsh import x_marsh_function
 
 Instantiate a model object with the use of ``Model`` object. 
 
