@@ -79,11 +79,12 @@ This loop runs the marsh_elevation_model for each sea-level rise scenario by mer
 The resulting time series are stored as separate .txt files in the ``model_output_M folder``.
 
 .. code:: ipython3
-
 	for result_name, df in results.items():
 		df.to_csv(f'model_output_M/{result_name}.txt', sep='\t', index=False)
 		
-		
+
+	
+	
 The time series output from each scenario is now stored in the ``results`` dictionary, where the keys (``result_name``) identify the scenario and the values contain the corresponding time series as DataFrames. To avoid repeatedly accessing them with ``results[result_name``] in the plot command, we unpack the dictionary into individual variables in the global namespace. Each key becomes a standalone variable name, directly assigned to its associated DataFrame for more convenient access in later analysis or plotting.
 
 
