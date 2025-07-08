@@ -34,10 +34,8 @@ The uncertainties and outcomes are attributes of the ``Model`` object. Here the 
 .. code:: ipython3
 
     uncertainties = [
-        CategoricalParameter('rcp', ['rcp26', 'rcp45', 'rcp85']),
-        CategoricalParameter('site', ['S15', 'S33']),
+        CategoricalParameter('rcp', ['rcp26', 'rcp85']),
         CategoricalParameter('slr_select', [1, 2, 3]),
-        CategoricalParameter('z_init', [0.4, 0.7, 1.2, 1.7]),
         CategoricalParameter('s_subsidence', [0.0027, 0.005]),
         CategoricalParameter('rho_deposit', [400, 800, 1200]),
         CategoricalParameter('c_flood', [0.05, 0.1, 0.2]),
