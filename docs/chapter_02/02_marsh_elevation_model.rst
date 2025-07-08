@@ -13,21 +13,21 @@ The module ``data_loader.py`` manages loading the tidal and sea level time serie
 .. code-block:: python
 
     class DataLoader:
-    """
-    DataLoader class to load tidal and sea level rise data for different climate scenarios and sites.
+		"""
+		DataLoader class to load tidal and sea level rise data for different climate scenarios and sites.
 
-    Parameters:
-    -----------
-    rcp : str
-        Representative Concentration Pathway identifier, 'rcp26', 'rcp45', 'rcp85'.
-    site : str
-        Site identifier, 'S15', 'S33'.
+		Parameters:
+		-----------
+		rcp : str
+			Representative Concentration Pathway identifier, 'rcp26', 'rcp45', 'rcp85'.
+		site : str
+			Site identifier, 'S15', 'S33'.
 
-    Attributes:
-    -----------
-    tides_per_year : pandas.DataFrame
-        Tidal projection data merged with SLR data for the specified RCP scenario and site.
-    """
+		Attributes:
+		-----------
+		tides_per_year : pandas.DataFrame
+			Tidal projection data merged with SLR data for the specified RCP scenario and site.
+		"""
 		def __init__(self, rcp, site):
 			import os
 			import pandas as pd
