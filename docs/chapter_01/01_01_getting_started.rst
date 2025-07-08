@@ -3,8 +3,8 @@ Getting Started: Setup Instructions
 
 To follow this tutorial and run the provided code examples successfully, please go through the following steps.
 
-1. Create a Tutorial Folder
-----------------------------
+ Create a Tutorial Folder
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Open a terminal window (on **Windows**, use *Command Prompt* or *PowerShell*; on **macOS/Linux**, use *Terminal*), and type:
 
@@ -15,8 +15,8 @@ Open a terminal window (on **Windows**, use *Command Prompt* or *PowerShell*; on
 
 This will create a folder called ``marsh_tutorial/`` and set it as your working directory.
 
-2. Download the Model Input Data
----------------------------------
+ Download the Model Input Data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Download the model input data from the following link:
 
@@ -30,8 +30,8 @@ You can extract the archive using your operating system's file manager, or with 
 
     unzip model_input_X_L.zip
 
-3. Create an Output Folder
----------------------------
+Create an Output Folder
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To store the results of your model runs, create a folder called ``model_output_M``:
 
@@ -39,8 +39,8 @@ To store the results of your model runs, create a folder called ``model_output_M
 
     mkdir model_output_M
 
-4. Verify Folder Structure
----------------------------
+ Verify Folder Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Your folder structure should now look like this:
 
@@ -53,8 +53,8 @@ Your folder structure should now look like this:
     ├── model_output_M/
     └── your_notebook.ipynb
 
-5. Run the Jupyter Notebook
-----------------------------
+ Run the Jupyter Notebook
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Launch your Jupyter Notebook **from within the** ``marsh_tutorial/`` **folder**. This ensures that all file paths used in the tutorial will resolve correctly.
 
