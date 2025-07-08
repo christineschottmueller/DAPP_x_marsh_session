@@ -123,7 +123,7 @@ Now the time series created with the ``marsh_accretion_model`` code are ready to
 	
 With the following code we will create the plot, which shows the simulated annual marsh elevation changes under two contrasting sea level rise scenarios:  
 
-..code:: ipython3
+.. code:: ipython3
 
 	fig, ax1 = plt.subplots(figsize=(9,6))  # adjust size as needed
 
