@@ -89,7 +89,7 @@ The time series output from each scenario is now stored in the ``results`` dicti
 
 .. code:: ipython3
 	for name, df in results.items():
-		globals()[name] = df
+	globals()[name] = df
 
 The final step in data pre-processing before plotting involves smoothing the accretion time series with the Savitzky-Golay filter. This step serves purely aesthetic purposes, helping to create cleaner and more visually appealing plots without altering the underlying trends.
 
@@ -97,7 +97,7 @@ The final step in data pre-processing before plotting involves smoothing the acc
 .. code:: ipython3
 
 	from scipy.signal import savgol_filter 
-    window_size = 11  # Window size must be odd
+	window_size = 11  # Window size must be odd
 	poly_order = 1
 	smoothed_low_26_conservation = savgol_filter(result_low_26_conservation['dz_dt'], window_size, poly_order)
 	smoothed_mean_26_conservation = savgol_filter(result_mean_26_conservation['dz_dt'], window_size, poly_order)
