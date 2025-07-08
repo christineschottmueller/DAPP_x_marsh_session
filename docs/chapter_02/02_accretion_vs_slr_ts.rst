@@ -87,22 +87,17 @@ The resulting time series are stored as separate .txt files in the ``model_outpu
 	
 The time series output from each scenario is now stored in the ``results`` dictionary, where the keys (``result_name``) identify the scenario and the values contain the corresponding time series as DataFrames. To avoid repeatedly accessing them with ``results[result_name``] in the plot command, we unpack the dictionary into individual variables in the global namespace. Each key becomes a standalone variable name, directly assigned to its associated DataFrame for more convenient access in later analysis or plotting.
 
-
 .. code:: ipython3
 	for name, df in results.items():
-		globals()[name] = df		
-		   
-.. code:: ipython3
-	for result_name, df in results.items():
-		df.to_csv(f'model_output_M/{result_name}.txt', sep='\t', index=False)
-		   
+		globals()[name] = df
 
 The final step in data pre-processing before plotting involves smoothing the accretion time series with the Savitzky-Golay filter. This step serves purely aesthetic purposes, helping to create cleaner and more visually appealing plots without altering the underlying trends.
 
 
 .. code:: ipython3
 
-    window_size = 10  # Window size must be odd
+	from scipy.signal import savgol_filter 
+    window_size = 11  # Window size must be odd
 	poly_order = 1
 	smoothed_low_26_conservation = savgol_filter(result_low_26_conservation['dz_dt'], window_size, poly_order)
 	smoothed_mean_26_conservation = savgol_filter(result_mean_26_conservation['dz_dt'], window_size, poly_order)
@@ -120,9 +115,7 @@ Now the time series created with the ``marsh_accretion_model`` code are ready to
  
 .. code:: ipython3
 
-    
-	import matplotlib.pyplot as plt
-	from scipy.signal import savgol_filter 
+    import matplotlib.pyplot as plt
 	import seaborn as sns
 	
 With the following code we will create the plot, which shows the simulated annual marsh elevation changes under two contrasting sea level rise scenarios:  
