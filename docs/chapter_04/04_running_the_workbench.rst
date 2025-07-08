@@ -9,19 +9,11 @@ We are now ready to connect the **x_marsh_function** to the EMA Workbench and ge
 
 Our experiment setup includes 10 parameters in total. Of these, 7 define uncertainties related to environmental conditions and system characteristics outside of the control of decision makers. The remaining 3 parameters are decision levers, representing policy choices. 
 
-
-
+Instantiate a model object with the use of ``Model`` object. 
 
 .. code:: ipython3
 
 	from ema_workbench import (Model, CategoricalParameter, ScalarOutcome)
-    
-Import wrapper function from x_marsh.py
-
-
-Instantiate a model object with the use of ``Model`` object. 
-
-.. code:: ipython3
 	
     model = Model('marshaccretion', function=x_marsh_function)
     model.uncertainties = uncertainties
