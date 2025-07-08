@@ -92,6 +92,9 @@ The time series output from each scenario is now stored in the ``results`` dicti
 	for name, df in results.items():
 		globals()[name] = df		
 		   
+.. code:: ipython3
+	for result_name, df in results.items():
+		df.to_csv(f'model_output_M/{result_name}.txt', sep='\t', index=False)
 		   
 
 The final step in data pre-processing before plotting involves smoothing the accretion time series with the Savitzky-Golay filter. This step serves purely aesthetic purposes, helping to create cleaner and more visually appealing plots without altering the underlying trends.
