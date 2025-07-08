@@ -24,9 +24,9 @@ For loading and preparing the data, we utilize the following python libraries fi
 	c_flood_nourishment = 0.0  # Policy: No nourishment strategy
 	nourishment_frequency = 1  # No nourishment every year
 	fd = 0.4                   # Policy: Conservation, basically means do nothing
-	slr_rcp_85 = pd.read_csv('model_input_X_L/slr85.csv', sep=',')
-	slr_rcp_26 = pd.read_csv('model_input_X_L/slr26.csv', sep=',')
-	tides_per_year = pd.read_csv('model_input_X_L/tides_rcp85_S15.tsv', sep='\t')
+	slr_rcp_85 = pd.read_csv('model_input_X_L/regional_slr_single_rcp/slr85.csv', sep=',')
+	slr_rcp_26 = pd.read_csv('model_input_X_L/regional_slr_single_rcp/slr26.csv', sep=',')
+	tides_per_year = pd.read_csv('model_input_X_L/tidal_projections/tides_rcp85_S15.tsv', sep='\t')
 
 Next, we organize the sea-level rise and mean sea-level time series into a dictionary (``slr_series_dict``) to facilitate iteration through different scenarios in the ``marsh_elevation_model``. Each entry corresponds to a specific RCP (2.6 or 8.5) and uncertainty level (low, mean, high), allowing efficient processing of multiple future sea-level trajectories.
  
@@ -53,7 +53,6 @@ This loop runs the marsh_elevation_model for each sea-level rise scenario by mer
 .. code:: ipython3
 
     results = {}
-
 	for result_name, slr_series in slr_series_dict.items():
 		merged_data = tides_per_year.merge(slr_series, on='year', how='left')
 				
@@ -70,19 +69,19 @@ This loop runs the marsh_elevation_model for each sea-level rise scenario by mer
 		)
 		 
 
-		results[result_name +'_conservation'] = pd.DataFrame({
-			'year': years,
-			'elevation': z_vals,
-			'dz_dt': dz_vals,
-			'msl': msl,
-		})
+	results[result_name +'_conservation'] = pd.DataFrame({
+		'year': years,
+		'elevation': z_vals,
+		'dz_dt': dz_vals,
+		'msl': msl,
+	})
 
 The resulting time series are stored as separate .txt files in the ``model_output_M folder``.
 
 .. code:: ipython3
 
 	for result_name, df in results.items():
-		df.to_csv(f'model_output_M/Accretion_time_series/{result_name}.txt', sep='\t', index=False)
+		df.to_csv(f'model_output_M/{result_name}.txt', sep='\t', index=False)
 		
 		
 The time series output from each scenario is now stored in the ``results`` dictionary, where the keys (``result_name``) identify the scenario and the values contain the corresponding time series as DataFrames. To avoid repeatedly accessing them with ``results[result_name``] in the plot command, we unpack the dictionary into individual variables in the global namespace. Each key becomes a standalone variable name, directly assigned to its associated DataFrame for more convenient access in later analysis or plotting.
@@ -90,7 +89,8 @@ The time series output from each scenario is now stored in the ``results`` dicti
 
 .. code:: ipython3
 	for name, df in results.items():
-		   globals()[name] = df		
+		globals()[name] = df		
+		   
 		   
 
 The final step in data pre-processing before plotting involves smoothing the accretion time series with the Savitzky-Golay filter. This step serves purely aesthetic purposes, helping to create cleaner and more visually appealing plots without altering the underlying trends.
