@@ -13,6 +13,7 @@ Instantiate a model object with the use of ``Model`` object.
 
 
 .. code:: ipython3
+
 	from ema_workbench import (Model, CategoricalParameter, ScalarOutcome, Constant)
 	model = Model('marshaccretion', function=x_marsh_function)
     
@@ -22,20 +23,20 @@ The uncertainties and outcomes are attributes of the ``Model`` object. Here the 
 .. code:: ipython3
 
     uncertainties = [
-	    Constant('z_init', [0.7]), 
-		Constant('site', ['S15']),
-        CategoricalParameter('rcp', ['rcp26', 'rcp85']),
-        CategoricalParameter('slr_select', [1, 2, 3]),
-        CategoricalParameter('s_subsidence', [0.0027, 0.005]),
-        CategoricalParameter('rho_deposit', [400, 800, 1200]),
-        CategoricalParameter('c_flood', [0.05, 0.1, 0.2]),
-        CategoricalParameter('fd', [0.2, 0.4, 0.6, 0.8]),
-        CategoricalParameter('nourishment_frequency', [1, 5, 10]),
-        CategoricalParameter('c_flood_nourishment', [0, 0.3, 0.5]),
+	Constant('z_init', [0.7]), 
+	Constant('site', ['S15']),
+	CategoricalParameter('rcp', ['rcp26', 'rcp85']),
+	CategoricalParameter('slr_select', [1, 2, 3]),
+	CategoricalParameter('s_subsidence', [0.0027, 0.005]),
+	CategoricalParameter('rho_deposit', [400, 800, 1200]),
+	CategoricalParameter('c_flood', [0.05, 0.1, 0.2]),
+	CategoricalParameter('fd', [0.2, 0.4, 0.6, 0.8]),
+	CategoricalParameter('nourishment_frequency', [1, 5, 10]),
+	CategoricalParameter('c_flood_nourishment', [0, 0.3, 0.5]),
     ]
 	
 	model.uncertainties = uncertainties
-    model.outcomes = outcomes
+	model.outcomes = outcomes
     
 In the ``x_marsh_function`` we defined outcomes of interest for each function evaluation, each experiment. 
 

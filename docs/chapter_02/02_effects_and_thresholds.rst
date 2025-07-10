@@ -19,7 +19,6 @@ Now we run the ``marsh_elevation_model```with the changed parameter, store the r
 
 	for result_name, slr_series in slr_series_dict.items():
     merged_data = tides_per_year.merge(slr_series, on='year', how='left')
-    #msl_series = merged_data['msl'].values
     
     msl = slr_series['msl']
     z_vals, years, dz_vals = marsh_elevation_model(
