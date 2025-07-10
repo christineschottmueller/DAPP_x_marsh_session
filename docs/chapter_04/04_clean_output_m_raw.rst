@@ -15,8 +15,8 @@ maintain the analytical integrity and interpretability of the results,
 these non-viable scenarios must be systematically identified and
 excluded from the dataset.
 
-I Exclusion of Cases with High Nourishment Frequency and Volume but Low Dry Bulk Density
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exclusion of Cases with High Nourishment Frequency and Volume but Low Dry Bulk Density
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sand nourishments are known to elevate the concentration of suspended
 mineral sediments in the water column, thereby promoting mineral
@@ -42,8 +42,8 @@ physical implausibility, as described above:
 | 0.5                   | 5                      | 400                 |
 +-----------------------+------------------------+---------------------+
 
-II Exclusion of Cases with Implausible Sediment Deposition Fractions and Vegetation States
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exclusion of Cases with Implausible Sediment Deposition Fractions and Vegetation States
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The parameter :math:`f_d` represents the fraction of sediment retained
 and reflects both vegetation-mediated trapping and management
@@ -81,8 +81,8 @@ physical implausibility, as described above:
 +------------+------------------+
 
 
-III Exclusion of Cases with Nourishment Frequency but No Input
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exclusion of Cases with Nourishment Frequency but No Input
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Cases with a non-zero nourishment frequency but zero nourishment amount
 (:math:`C_{\mathcal{N}} = 0`) are excluded, as they imply sediment input
@@ -101,7 +101,7 @@ physical implausibility, as described above:
 
 
 Define filter code
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: ipython3
 
@@ -133,7 +133,7 @@ Define filter code
         return df_II[~mask_III]
 
 Load dataset
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: ipython3
 
@@ -144,7 +144,7 @@ Load dataset
     out_raw=pd.concat([experiments, outcomes], axis = 1)
 
 Apply filter and store filtered dataset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: ipython3
 
