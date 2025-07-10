@@ -37,19 +37,6 @@ Welcome to x-marsh's documentation!
    chapter_04/04_clean_output_m_raw
  
  
-.. toctree::
-   :maxdepth: 2
-   :caption: Deriving Policy Lifespans
-   
-   chapter_06/06_policy_lifespans
-   
-   
-.. toctree::
-   :maxdepth: 2
-   :caption: Inducing DAPPs
-   
-   chapter_07/07_adaptation_pathways
-   
    
 
 Indices and tables
