@@ -10,7 +10,7 @@ Data loading and preparation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 For loading and preparing the data, we utilize the following python libraries first.
 
-
+.. code:: ipython3
     import pandas as pd
 	import numpy as np
 
