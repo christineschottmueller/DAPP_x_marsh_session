@@ -13,9 +13,8 @@ Instantiate a model object with the use of ``Model`` object.
 
 .. code:: ipython3
 
-	from ema_workbench import (Model, CategoricalParameter, ScalarOutcome)
-	
-    model = Model('marshaccretion', function=x_marsh_function)
+	from ema_workbench import (Model, CategoricalParameter, ScalarOutcome, Constant)
+	model = Model('marshaccretion', function=x_marsh_function)
     
 
 The uncertainties and outcomes are attributes of the ``Model`` object. Here the sets of their possible values are specified.
@@ -23,6 +22,8 @@ The uncertainties and outcomes are attributes of the ``Model`` object. Here the 
 .. code:: ipython3
 
     uncertainties = [
+	    Constant('z_init', [0.7]), 
+		Constant('site', ['S15']),
         CategoricalParameter('rcp', ['rcp26', 'rcp85']),
         CategoricalParameter('slr_select', [1, 2, 3]),
         CategoricalParameter('s_subsidence', [0.0027, 0.005]),
