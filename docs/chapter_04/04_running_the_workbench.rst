@@ -11,8 +11,8 @@ Our experiment setup includes 10 parameters in total. Of these, 7 define uncerta
 
 Instantiate a model object with the use of ``Model`` object. 
 
-.. code:: ipython3
 
+.. code:: ipython3
 	from ema_workbench import (Model, CategoricalParameter, ScalarOutcome, Constant)
 	model = Model('marshaccretion', function=x_marsh_function)
     
